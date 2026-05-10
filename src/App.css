@@ -1,0 +1,109 @@
+/* App-specific styles */
+
+/* Smooth section transitions */
+section {
+  position: relative;
+}
+
+/* Enhanced glass morphism */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Gradient text enhancement */
+.text-gradient {
+  background-size: 200% auto;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* Glow effects */
+.glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.glow:hover {
+  box-shadow: 0 0 40px -5px hsl(var(--gradient-start) / 0.6);
+}
+
+/* Input focus states */
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--gradient-start) / 0.3);
+}
+
+/* Button ripple effect */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+/* Card hover lift effect */
+.glass-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Selection color */
+::selection {
+  background: hsl(var(--gradient-start) / 0.3);
+  color: inherit;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--gradient-start));
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
