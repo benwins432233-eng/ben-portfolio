@@ -14,7 +14,7 @@ export default async function handler(req: any, res: any) {
         const email = buildContactEmail(data);
 
         await resend.emails.send({
-            from: "Portfolio support@esam.jo3.org",
+            from: "Portfolio Support <support@esam.jo3.org>",
             to: "benwins432233@gmail.com",
             replyTo: data.email,
             subject: email.subject,
