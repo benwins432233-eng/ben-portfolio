@@ -790,7 +790,7 @@ function ContactSection() {
             <div className="space-y-4">
               {[
                 { icon: Mail, label: 'Email', value: 'benoitwinsavi@gmail.com', href: 'mailto:benoitwinsavi@gmail.com' },
-                { icon: Globe, label: 'Site web', value: 'benwins.vercel.app', href: 'https://ben-portfolio-smoky.vercel.app' },
+                { icon: Globe, label: 'Site web', value: 'ben-wins.vercel.app', href: 'https://ben-wins.vercel.app' },
                 { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/bénoît-winsavi-8132393a0', href: 'https://linkedin.com/in/bénoît-winsavi-8132393a0' },
               ].map((item, index) => (
                 <motion.a
@@ -872,7 +872,7 @@ function ContactSection() {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={(e) => { handleSubmit }}
+              <form onSubmit={() => { handleSubmit }}
                 className="glass-card rounded-2xl p-8 space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
