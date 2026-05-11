@@ -737,6 +737,13 @@ function ContactSection() {
     isSubmitting,
     submit,
   } = useContactForm();
+  const [status, setStatus] = useState<'idle' | 'success'>('idle');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await submit();
+    setStatus('success');
+  };
+
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -782,18 +789,21 @@ function ContactSection() {
 
             <div className="space-y-4">
               {[
-                { icon: Mail, label: 'Email', value: 'benwins@dev@gmail.com' },
-                { icon: Globe, label: 'Site web', value: 'benwins.vercel.app' },
-                { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/bénoît-winsavi-8132393a0' },
+                { icon: Mail, label: 'Email', value: 'benoitwinsavi@gmail.com', href: 'mailto:benoitwinsavi@gmail.com' },
+                { icon: Globe, label: 'Site web', value: 'benwins.vercel.app', href: 'https://ben-portfolio-smoky.vercel.app' },
+                { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/bénoît-winsavi-8132393a0', href: 'https://linkedin.com/in/bénoît-winsavi-8132393a0' },
               ].map((item, index) => (
-                <motion.div
+                <motion.a
                   key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
-                  className="flex items-center gap-4 p-4 rounded-xl glass-card"
+                  className="flex items-center gap-4 p-4 rounded-xl glass-card cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <div className="p-3 rounded-lg bg-gradient">
                     <item.icon className="w-5 h-5 text-white" />
@@ -802,7 +812,7 @@ function ContactSection() {
                     <div className="text-sm text-muted-foreground">{item.label}</div>
                     <div className="font-medium">{item.value}</div>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
 
@@ -839,92 +849,113 @@ function ContactSection() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              submit();
-            }}
-              className="glass-card rounded-2xl p-8 space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Nom complet
-                </label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Votre nom"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Contact WhatsApp
-                </label>
-                <Input
-                  id="whatsapp"
-                  type="tel"
-                  placeholder="+229 00 00 00 00"
-                  value={formData.whatsapp}
-                  onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                  required
-                  className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Adresse email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="votre@email.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Décrivez votre projet..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  rows={5}
-                  className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10 resize-none"
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl bg-gradient text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed glow"
+            {status === 'success' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="glass-card rounded-2xl p-10 text-center space-y-4"
               >
-                {isSubmitting ? (
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                <div className="text-4xl">✅</div>
+                <h3 className="text-xl font-semibold">
+                  Message envoyé avec succès
+                </h3>
+                <p className="text-muted-foreground">
+                  Merci pour votre message.
+                  Je vous répondrai dans les plus brefs délais.
+                </p>
+
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-4 text-sm underline text-muted-foreground hover:text-foreground"
+                >
+                  Envoyer un autre message
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={(e) => { handleSubmit }}
+                className="glass-card rounded-2xl p-8 space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    Nom complet
+                  </label>
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Votre nom"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
                   />
-                ) : (
-                  <>
-                    Envoyer le message
-                    <Send className="w-5 h-5" />
-                  </>
-                )}
-              </motion.button>
-            </form>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Contact WhatsApp
+                  </label>
+                  <Input
+                    id="whatsapp"
+                    type="tel"
+                    placeholder="+229 00 00 00 00"
+                    value={formData.whatsapp}
+                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                    required
+                    className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Adresse email
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="votre@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    placeholder="Décrivez votre projet..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    rows={5}
+                    className="bg-white/50 dark:bg-white/5 border-white/30 dark:border-white/10 resize-none"
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-4 rounded-xl bg-gradient text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed glow"
+                >
+                  {isSubmitting ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                    />
+                  ) : (
+                    <>
+                      Envoyer le message
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
