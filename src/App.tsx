@@ -872,8 +872,7 @@ function ContactSection() {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={() => { handleSubmit }}
-                className="glass-card rounded-2xl p-8 space-y-6">
+              <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Nom complet
