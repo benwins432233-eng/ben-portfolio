@@ -1,5 +1,5 @@
 import type { ContactFormData } from "../../types/contact.js";
-import { normalizeWhatsApp } from "./normalize";
+import { normalizeWhatsApp } from "./normalize.js";
 
 export const buildContactEmail = (data: ContactFormData) => {
   const whatsapp = normalizeWhatsApp(data.whatsapp);
