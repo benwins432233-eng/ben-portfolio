@@ -174,7 +174,8 @@ function HeroSection() {
               className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
               Développeur Web Full-Stack passionné, spécialisé dans le{' '}
-              <span className="text-foreground font-medium">vibe coding</span> et la création
+              <span className="text-foreground font-medium">conception et le développement d’applications web modernes,
+              performantes et orientées utilisateur.</span> et la création
               d'expériences digitales captivantes.
             </motion.p>
 
@@ -212,9 +213,9 @@ function HeroSection() {
               className="flex gap-4 justify-center lg:justify-start mt-10"
             >
               {[
-                { icon: Github, href: 'https://github.com', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-                { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+                { icon: Github, href: 'https://github.com/benwins432233-eng', label: 'GitHub' },
+                { icon: Linkedin, href: 'linkedin.com/in/bénoît-winsavi-8132393a0', label: 'LinkedIn' },
+                { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61582823141359', label: 'Facebook' }
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
