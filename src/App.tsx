@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MessageCircle, Facebook, Moon, Sun, Menu, X, Code2, Database, Users, Zap,
-  Github, ExternalLink, Mail, Linkedin, Twitter,
+  Github, ExternalLink, Mail, Linkedin,
   ArrowRight, Send, Sparkles, Globe, Cpu
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
