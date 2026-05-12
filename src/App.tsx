@@ -637,16 +637,6 @@ function ProjectsSection() {
                     >
                       <ExternalLink className="w-5 h-5" />
                     </motion.a>
-                    <motion.a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 rounded-full bg-white text-black"
-                    >
-                      <Github className="w-5 h-5" />
-                    </motion.a>
                   </motion.div>
                 </div>
 
