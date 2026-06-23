@@ -499,10 +499,11 @@ function ProjectsSection() {
       description: 'Plateforme e-commerce moderne avec panier dynamique, commandes flexibles et rapides, et tableau de bord administrateur.',
       image: '/images/vannys.png',
       tags: ['Next.js', 'Mobile Money', 'React', 'MySql'],
-      demoUrl: 'https://vannys-frontend.vercel.app',
+      demoUrl: 'https://vannystouch.vercel.app',
       githubUrl: 'https://github.com/benwins432233-eng/vannys-frontend',
       status: 'completed',
     },
+
     {
       title: 'ESAM',
       description: "Site Institutionnel - Ecole des Arts et de la Mode, avec prise de contact avec administration et suivi des réalisations professionnel de l'institut",
@@ -512,6 +513,7 @@ function ProjectsSection() {
       githubUrl: 'https://github.com/benwins432233-eng/esam-v1',
       status: 'completed',
     },
+
     {
       title: 'Jecosda',
       description: 'Site web professionnel de nettoyage avec résservation client simple et rapide, tableau de bord administrateur moderne',
@@ -521,6 +523,7 @@ function ProjectsSection() {
       githubUrl: 'https://github.com/benwins432233-eng/Jecosda-1.0.1',
       status: 'completed',
     },
+
     {
       title: 'Dynamikbox',
       description: 'Bibliothèque numérique avec lecteur intégré, paiments sécurisés et rapides, tableau de bord utilisateur et administrateur',
@@ -528,6 +531,26 @@ function ProjectsSection() {
       tags: ['React', 'MySql', 'FastAPI', 'TailwindCSS', 'Next.js', 'Service Worker'],
       demoUrl: 'https://dynamikbox.space',
       githubUrl: 'https://github.com/benwins432233-eng/Dynamikbox',
+      status: 'completed',
+    },
+
+    {
+      title: 'Truth Of News',
+      description: "Site d'actualité complètement refondue sur un architecture moderne et maîtrisée. Le projet a consisté à migrer une stack firebase vers un backend Node.js en TypeScript et une base de données relationnelle",
+      image: '/images/truth.png',
+      tags: ['TypeScript', 'MySql', 'Node.js', 'TailwindCSS', 'Next.js'],
+      demoUrl: 'https://truthofnews.vercel.app',
+      githubUrl: '#',
+      status: 'completed',
+    },
+
+    {
+      title: 'AfriNova',
+      description: "Site vitrine destiné à la mise en avant d'une entreprise de technologie visant la digitalisation des business locaux",
+      image: '/images/afrinova.png',
+      tags: ['Resend', 'TypeScript', 'Node.js', 'TailwindCSS', 'Next.js'],
+      demoUrl: 'https://afrinova-tech.vercel.app',
+      githubUrl: '#',
       status: 'completed',
     },
   ];
@@ -974,8 +997,8 @@ function Footer() {
             className="flex gap-4"
           >
             {[
-              { icon: MessageCircle, href: 'https://wa.me/22997000000', label: 'WhatsApp' },
-              { icon: Facebook, href: 'https://linkedin.com', label: 'Facebook' },
+              { icon: MessageCircle, href: 'https://wa.me/2290163312019', label: 'WhatsApp' },
+              { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61582823141359', label: 'Facebook' },
             ].map((social) => (
               <a
                 key={social.label}
