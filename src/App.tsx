@@ -274,7 +274,7 @@ function HeroSection() {
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               >
-                <span className="text-sm font-semibold text-gradient">4+ Projets</span>
+                <span className="text-sm font-semibold text-gradient">6+ Projets</span>
               </motion.div>
             </div>
           </motion.div>
@@ -307,7 +307,7 @@ function HeroSection() {
 // About Section
 function AboutSection() {
   const stats = [
-    { value: '4+', label: 'Projets déployés' },
+    { value: '6+', label: 'Projets déployés' },
     { value: '2+', label: 'Années d\'expérience' },
     { value: '100%', label: 'Passion' },
     { value: '∞', label: 'Créativité' },
